@@ -2,24 +2,36 @@ package go_logger
 
 import (
 	"errors"
-	"github.com/fatih/color"
 	"io"
 	"os"
 	"reflect"
 	"sync"
+
+	"github.com/fatih/color"
 )
 
 const CONSOLE_ADAPTER_NAME = "console"
 
+// var levelColors = map[int]color.Attribute{
+// 	LOGGER_LEVEL_EMERGENCY: color.FgWhite,   //white
+// 	LOGGER_LEVEL_ALERT:     color.FgCyan,    //cyan
+// 	LOGGER_LEVEL_CRITICAL:  color.FgMagenta, //magenta
+// 	LOGGER_LEVEL_ERROR:     color.FgRed,     //red
+// 	LOGGER_LEVEL_WARNING:   color.FgYellow,  //yellow
+// 	LOGGER_LEVEL_NOTICE:    color.FgGreen,   //green
+// 	LOGGER_LEVEL_INFO:      color.FgBlue,    //blue
+// 	LOGGER_LEVEL_DEBUG:     color.BgBlue,    //background blue
+// }
 var levelColors = map[int]color.Attribute{
-	LOGGER_LEVEL_EMERGENCY: color.FgWhite,   //white
-	LOGGER_LEVEL_ALERT:     color.FgCyan,    //cyan
-	LOGGER_LEVEL_CRITICAL:  color.FgMagenta, //magenta
-	LOGGER_LEVEL_ERROR:     color.FgRed,     //red
-	LOGGER_LEVEL_WARNING:   color.FgYellow,  //yellow
-	LOGGER_LEVEL_NOTICE:    color.FgGreen,   //green
-	LOGGER_LEVEL_INFO:      color.FgBlue,    //blue
-	LOGGER_LEVEL_DEBUG:     color.BgBlue,    //background blue
+	LOGGER_LEVEL_EMERGENCY: color.FgBlue, //blue
+	// LOGGER_LEVEL_EMERGENCY: color.FgWhite,   //white
+	LOGGER_LEVEL_ALERT:    color.FgCyan,    //cyan
+	LOGGER_LEVEL_CRITICAL: color.BgBlue,    //background blue
+	LOGGER_LEVEL_ERROR:    color.FgRed,     //red
+	LOGGER_LEVEL_WARNING:  color.FgYellow,  //yellow
+	LOGGER_LEVEL_NOTICE:   color.FgMagenta, //magenta
+	LOGGER_LEVEL_INFO:     color.FgWhite,   //white
+	LOGGER_LEVEL_DEBUG:    color.FgGreen,   //green
 }
 
 // adapter console
