@@ -1,12 +1,14 @@
 # go-logger
-A simple but powerful golang log Toolkit  
 
-[![Sourcegraph](https://sourcegraph.com/github.com/phachon/go-logger/-/badge.svg)](https://sourcegraph.com/github.com/phachon/go-logger?badge)
-[![godoc](http://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/phachon/go-logger) [![license](http://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://raw.githubusercontent.com/phachon/go-logger/master/LICENSE)
+A simple but powerful golang log Toolkit
+
+[![Sourcegraph](https://sourcegraph.com/github.com/pizixi/go-logger/-/badge.svg)](https://sourcegraph.com/github.com/pizixi/go-logger?badge)
+[![godoc](http://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/pizixi/go-logger) [![license](http://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://raw.githubusercontent.com/phachon/go-logger/master/LICENSE)
 
 [中文文档](/README_CN.md)
 
 # Feature
+
 - Support at the same time to console, file, URL
 - console output fonts can be colored with
 - File output supports three types of segmentation based on the size of the file, the number of file lines, and the date.
@@ -18,19 +20,20 @@ A simple but powerful golang log Toolkit
 # Install
 
 ```
-go get github.com/phachon/go-logger
+go get github.com/pizixi/go-logger
 go get ./...
 ```
 
 # Requirement
+
 go 1.8
 
 # Support outputs
-- console  // write console
-- file     // write file
-- api      // http request url
-- ...
 
+- console // write console
+- file // write file
+- api // http request url
+- ...
 
 # Quick Used
 
@@ -38,7 +41,7 @@ go 1.8
 
 ```
 import (
-    "github.com/phachon/go-logger"
+    "github.com/pizixi/go-logger"
 )
 func main()  {
     logger := go_logger.NewLogger()
@@ -52,7 +55,7 @@ func main()  {
 
 ```
 import (
-    "github.com/phachon/go-logger"
+    "github.com/pizixi/go-logger"
 )
 func main()  {
     logger := go_logger.NewLogger()
@@ -70,7 +73,7 @@ func main()  {
 
 ```
 import (
-    "github.com/phachon/go-logger"
+    "github.com/pizixi/go-logger"
 )
 func main()  {
     logger := go_logger.NewLogger()
@@ -111,28 +114,30 @@ func main()  {
 ```
 
 ## Console text with color effect
-![image](https://github.com/phachon/go-logger/blob/master/_example/images/console.png)
+
+![image](https://github.com/pizixi/go-logger/blob/master/_example/images/console.png)
 
 ## Customize Format output
 
 ### Logger Message
 
-| Field | Alias |Type  | Comment | Example |
-|-------|-------|------|---------|----------|
-| Timestamp | timestamp | int64 | unix timestamp| 1521791201 |
-| TimestampFormat | timestamp_format| string | timestamp format | 2018-3-23 15:46:41|
-| Millisecond | millisecond | int64 | millisecond | 1524472688352 |
-| MillisecondFormat | millisecond_format| string | millisecond_format | 2018-3-23 15:46:41.970 |
-| Level | level| int | logger level |  1  |
-| LevelString | level_string | string | logger level string | Error |
-| Body | body | string | logger message body | this is a info log |
-| File | file | string | Call the file of the logger | main.go |
-| Line | line | int | The number of specific lines to call logger |64|
-| Function | function| string | The function name to call logger  | main.main |
+| Field             | Alias              | Type   | Comment                                     | Example                |
+| ----------------- | ------------------ | ------ | ------------------------------------------- | ---------------------- |
+| Timestamp         | timestamp          | int64  | unix timestamp                              | 1521791201             |
+| TimestampFormat   | timestamp_format   | string | timestamp format                            | 2018-3-23 15:46:41     |
+| Millisecond       | millisecond        | int64  | millisecond                                 | 1524472688352          |
+| MillisecondFormat | millisecond_format | string | millisecond_format                          | 2018-3-23 15:46:41.970 |
+| Level             | level              | int    | logger level                                | 1                      |
+| LevelString       | level_string       | string | logger level string                         | Error                  |
+| Body              | body               | string | logger message body                         | this is a info log     |
+| File              | file               | string | Call the file of the logger                 | main.go                |
+| Line              | line               | int    | The number of specific lines to call logger | 64                     |
+| Function          | function           | string | The function name to call logger            | main.main              |
 
->> If you want to customize the format of the log output ?
+> > If you want to customize the format of the log output ?
 
 **config format**:
+
 ```
 consoleConfig := &go_logger.ConsoleConfig{
     Format: "%millisecond_format% [%level_string%] %body%",
@@ -141,25 +146,27 @@ fileConfig := &go_logger.FileConfig{
     Format: "%millisecond_format% [%level_string%] %body%",
 }
 ```
+
 **output**:
+
 ```
 2018-03-23 14:55:07.003 [Critical] this is a critical log!
 ```
 
->> You can customize the format, Only needs to be satisfied Format: "%Logger Message Alias%"
+> > You can customize the format, Only needs to be satisfied Format: "%Logger Message Alias%"
 
 ## More adapter examples
+
 - [console](./_example/console.go)
 - [file](./_example/file.go)
 - [api](./_example/api.go)
 
-
 ## Benchmark
 
-system: Linux Mint 18.2 Sonya  
-cpu(s): 4  
-model name: Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz  
-memery: 4G  
+system: Linux Mint 18.2 Sonya
+cpu(s): 4
+model name: Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz
+memery: 4G
 
 ```
 BenchmarkLoggerConsoleText          500000             11375 ns/op             672 B/op         15 allocs/op
@@ -198,6 +205,7 @@ BenchmarkLoggerFileJson-4           200000             25596 ns/op            19
 ```
 
 ## Reference
+
 beego/logs : github.com/astaxie/beego/logs
 
 ## Feedback
@@ -208,6 +216,6 @@ Welcome to submit comments and code, contact information phachon@163.com
 
 MIT
 
-Thanks
----------
+## Thanks
+
 Create By phachon@163.com

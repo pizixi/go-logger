@@ -1,9 +1,5 @@
 package main
 
-import (
-	"github.com/phachon/go-logger"
-)
-
 func main() {
 
 	logger := go_logger.NewLogger()

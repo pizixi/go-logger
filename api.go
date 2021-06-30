@@ -3,9 +3,10 @@ package go_logger
 import (
 	"errors"
 	"fmt"
-	"github.com/phachon/go-logger/utils"
 	"reflect"
 	"strconv"
+
+	"github.com/pizixi/go-logger/utils"
 )
 
 const API_ADAPTER_NAME = "api"

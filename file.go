@@ -2,13 +2,14 @@ package go_logger
 
 import (
 	"errors"
-	"github.com/phachon/go-logger/utils"
 	"os"
 	"path"
 	"reflect"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/pizixi/go-logger/utils"
 )
 
 const FILE_ADAPTER_NAME = "file"

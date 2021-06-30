@@ -1,13 +1,15 @@
 # go-logger
-一个简单而强大的 golang 日志工具包  
 
-[![Sourcegraph](https://sourcegraph.com/github.com/phachon/go-logger/-/badge.svg)](https://sourcegraph.com/github.com/phachon/go-logger?badge)
-[![godoc](http://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/phachon/go-logger) [![license](http://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://raw.githubusercontent.com/phachon/go-logger/master/LICENSE)
+一个简单而强大的 golang 日志工具包
 
-[English document](/README.md)  
+[![Sourcegraph](https://sourcegraph.com/github.com/pizixi/go-logger/-/badge.svg)](https://sourcegraph.com/github.com/pizixi/go-logger?badge)
+[![godoc](http://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/pizixi/go-logger) [![license](http://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://raw.githubusercontent.com/phachon/go-logger/master/LICENSE)
+
+[English document](/README.md)
 
 # 功能
-- 支持同时输出到 console, file, url 
+
+- 支持同时输出到 console, file, url
 - 命令行输出字体可带颜色
 - 文件输出支持根据 文件大小，文件行数，日期三种方式切分
 - 文件输出支持根据日志级别分别保存到不同的文件
@@ -18,16 +20,19 @@
 # 安装使用
 
 ```
-go get github.com/phachon/go-logger
+go get github.com/pizixi/go-logger
 go get ./...
 ```
+
 # 环境需要
+
 go 1.8
 
 # 支持输出
-- console  // 输出到命令行
-- file     // 文件
-- api      // http url 接口
+
+- console // 输出到命令行
+- file // 文件
+- api // http url 接口
 - ...
 
 # 快速使用
@@ -36,7 +41,7 @@ go 1.8
 
 ```
 import (
-    "github.com/phachon/go-logger"
+    "github.com/pizixi/go-logger"
 )
 func main()  {
     logger := go_logger.NewLogger()
@@ -50,7 +55,7 @@ func main()  {
 
 ```
 import (
-    "github.com/phachon/go-logger"
+    "github.com/pizixi/go-logger"
 )
 func main()  {
     logger := go_logger.NewLogger()
@@ -68,7 +73,7 @@ func main()  {
 
 ```
 import (
-    "github.com/phachon/go-logger"
+    "github.com/pizixi/go-logger"
 )
 func main()  {
     logger := go_logger.NewLogger()
@@ -109,28 +114,30 @@ func main()  {
 ```
 
 ## 命令行下的文本带颜色效果
-![image](https://github.com/phachon/go-logger/blob/master/_example/images/console.png)
+
+![image](https://github.com/pizixi/go-logger/blob/master/_example/images/console.png)
 
 ## 自定义格式化输出
 
 Logger Message
 
-| 字段 | 别名 |类型  | 说明 | 例子 |
-|-------|-------|------|---------|----------|
-| Timestamp | timestamp | int64 | Unix时间戳 | 1521791201 |
-| TimestampFormat | timestamp_format| string | 时间戳格式化字符串 | 2018-3-23 15:46:41|
-| Millisecond | millisecond | int64 | 毫秒时间戳 | 1524472688352 |
-| MillisecondFormat | millisecond_format| string | 毫秒时间戳格式化字符串 | 2018-3-23 15:46:41.970 |
-| Level | level| int | 日志级别 |  1  |
-| LevelString | level_string | string | 日志级别字符串 | Error |
-| Body | body | string | 日志内容 | this is a info log |
-| File | file | string | 调用本次日志输出的文件名 | main.go |
-| Line | line | int | 调用本次日志输出的方法 |64|
-| Function | function| string | 调用本次日志输出的方法名  | main.main |
+| 字段              | 别名               | 类型   | 说明                     | 例子                   |
+| ----------------- | ------------------ | ------ | ------------------------ | ---------------------- |
+| Timestamp         | timestamp          | int64  | Unix 时间戳              | 1521791201             |
+| TimestampFormat   | timestamp_format   | string | 时间戳格式化字符串       | 2018-3-23 15:46:41     |
+| Millisecond       | millisecond        | int64  | 毫秒时间戳               | 1524472688352          |
+| MillisecondFormat | millisecond_format | string | 毫秒时间戳格式化字符串   | 2018-3-23 15:46:41.970 |
+| Level             | level              | int    | 日志级别                 | 1                      |
+| LevelString       | level_string       | string | 日志级别字符串           | Error                  |
+| Body              | body               | string | 日志内容                 | this is a info log     |
+| File              | file               | string | 调用本次日志输出的文件名 | main.go                |
+| Line              | line               | int    | 调用本次日志输出的方法   | 64                     |
+| Function          | function           | string | 调用本次日志输出的方法名 | main.main              |
 
->> 你想要自定义日志输出格式 ?
+> > 你想要自定义日志输出格式 ?
 
 **配置 Format 参数**:
+
 ```
 consoleConfig := &go_logger.ConsoleConfig{
     Format: "%millisecond_format% [%level_string%] %body%",
@@ -139,25 +146,27 @@ fileConfig := &go_logger.FileConfig{
     Format: "%millisecond_format% [%level_string%] %body%",
 }
 ```
+
 **输出结果**:
+
 ```
 2018-03-23 14:55:07.003 [Critical] this is a critical log!
 ```
 
->> 你只需要配置参数 Format: "% Logger Message 别名%" 来自定义输出字符串格式
+> > 你只需要配置参数 Format: "% Logger Message 别名%" 来自定义输出字符串格式
 
 ## 更多的 adapter 例子
+
 - [console](./_example/console.go)
 - [file](./_example/file.go)
 - [api](./_example/api.go)
 
-
 ## 性能测试结果
 
-system: Linux Mint 18.2 Sonya  
-cpu(s): 4  
-model name: Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz  
-memery: 4G  
+system: Linux Mint 18.2 Sonya
+cpu(s): 4
+model name: Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz
+memery: 4G
 
 ```
 BenchmarkLoggerConsoleText          500000             11375 ns/op             672 B/op         15 allocs/op
@@ -196,6 +205,7 @@ BenchmarkLoggerFileJson-4           200000             25596 ns/op            19
 ```
 
 ## 参考
+
 beego/logs : github.com/astaxie/beego/logs
 
 ## 反馈
@@ -206,6 +216,6 @@ beego/logs : github.com/astaxie/beego/logs
 
 MIT
 
-谢谢
----
+## 谢谢
+
 Create By phachon@163.com
